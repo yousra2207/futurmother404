@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maman Pro Max (Bêta)</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            text-align: center;
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            width: 350px;
+        }
+
+        h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .question-box {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            font-size: 14px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        .button:hover {
+            background-color: #45a049;
+        }
+
+        .response {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #e7f3e7;
+            border-radius: 5px;
+            font-size: 14px;
+            color: #333;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .response p {
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Bienvenue sur Maman Pro Max (Bêta)</h1>
+    <p>Posez votre question ci-dessous :</p>
+
+    <input type="text" id="question" class="question-box" placeholder="Entrez votre question..." />
+    <button class="button" onclick="repondre()">Poser la question</button>
+
+    <div id="reponse" class="response" style="display: none;">
+        <!-- La réponse va être affichée ici -->
+    </div>
+</div>
+
+<script>
+    function repondre() {
+        var question = document.getElementById("question").value.toLowerCase();
+        var reponse = document.getElementById("reponse");
+
+        // Réponses humoristiques et taquines
+        var reponses = [
+            "Tu veux des conseils pour ton bébé ? D'abord, occupe-toi de ta propre vie !",
+            "Ah, tu veux encore des conseils pour bébé ? C’est pas un peu trop ?",
+            "Laisse-moi tranquille, je suis déjà assez occupée avec toutes tes questions !",
+            "Un bébé, c’est beaucoup de travail ! Tu veux vraiment savoir tout ça ?",
+            "C’est une question sérieuse ou tu veux juste que je t'épuise avec mes réponses ?",
+            "Tu veux que ton bébé fasse ça ? Mais pourquoi tu ne lui demandes pas directement ?",
+            "Haha, tu veux des astuces ? Peut-être qu’un peu de patience ferait l’affaire !",
+            "Franchement, tu devrais t’entraîner à gérer un bébé avant de poser trop de questions !",
+            "Des questions sur le bébé ? T’as pas encore commencé à dormir, c’est ça ?",
+            "Ah, une autre question sur le bébé ? C'est comme ça que tu veux dépenser ta journée ?",
+            "Je suis un robot, pas une nounou, hein ! Trouve-toi un livre !",
+            "Tu me poses des questions sur le bébé et tu veux pas qu’il y ait de répétitions ? Va falloir que tu sois patient !"
+        ];
+
+        // Clear previous responses
+        reponse.innerHTML = '';
+
+        // Si la question contient le mot "bébé", on génère plusieurs réponses
+        if (question.includes("bébé")) {
+            // Sélectionne plusieurs réponses aléatoires et les affiche
+            var numResponses = 3; // Le nombre de réponses à afficher
+            var selectedResponses = [];
+
+            // Générer plusieurs réponses aléatoires sans répétition
+            while (selectedResponses.length < numResponses) {
+                var randomResponse = reponses[Math.floor(Math.random() * reponses.length)];
+                if (!selectedResponses.includes(randomResponse)) {
+                    selectedResponses.push(randomResponse);
+                }
+            }
+
+            // Afficher les réponses sous forme de paragraphes
+            selectedResponses.forEach(function(response) {
+                var paragraph = document.createElement("p");
+                paragraph.textContent = response;
+                reponse.appendChild(paragraph);
+            });
+        } else {
+            // Si la question ne concerne pas le bébé, une réponse par défaut
+            reponse.innerHTML = "<p>Tu veux parler de ton bébé, non ? Je t’ai bien eu, hein ?</p>";
+        }
+
+        // Afficher la div avec les réponses
+        reponse.style.display = "block";
+    }
+</script>
+
+</body>
+</html>
+          
